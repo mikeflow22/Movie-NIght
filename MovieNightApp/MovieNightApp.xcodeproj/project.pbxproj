@@ -16,6 +16,7 @@
 		1BB3589523DB4BB0009F825A /* URLConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589423DB4BB0009F825A /* URLConstructor.swift */; };
 		1BB3589823DB6DEB009F825A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589723DB6DEB009F825A /* NetworkManager.swift */; };
 		1BB3589B23DB6E46009F825A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589A23DB6E46009F825A /* Extensions.swift */; };
+		1BB3589D23DB711B009F825A /* TopLevelDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589C23DB711B009F825A /* TopLevelDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1BB3589423DB4BB0009F825A /* URLConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstructor.swift; sourceTree = "<group>"; };
 		1BB3589723DB6DEB009F825A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1BB3589A23DB6E46009F825A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1BB3589C23DB711B009F825A /* TopLevelDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLevelDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				1BB3589723DB6DEB009F825A /* NetworkManager.swift */,
+				1BB3589C23DB711B009F825A /* TopLevelDictionary.swift */,
 			);
 			path = Netowking;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			files = (
 				1BB3589523DB4BB0009F825A /* URLConstructor.swift in Sources */,
 				1BB3589B23DB6E46009F825A /* Extensions.swift in Sources */,
+				1BB3589D23DB711B009F825A /* TopLevelDictionary.swift in Sources */,
 				1B3A896223DA8C73000280C1 /* AppDelegate.swift in Sources */,
 				1BB3589823DB6DEB009F825A /* NetworkManager.swift in Sources */,
 				1B3A896423DA8C73000280C1 /* SceneDelegate.swift in Sources */,
