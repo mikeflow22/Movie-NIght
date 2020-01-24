@@ -15,6 +15,8 @@ enum GenreIds: Int {
     case Crime = 80
 }
 class NetworkManager {
+    var movies = [Movie]()
+    
     private let apiKey = "3021207a0f44385e84ef7cc905fb9320"
     private let baseURL = URL(string: "https://api.themoviedb.org/3/search/movie")!
     
@@ -27,9 +29,9 @@ class NetworkManager {
         switch genreID {
         case "Action":
             genreID = "\(GenreIds.Action.rawValue)"
-            case "Adventure":
+        case "Adventure":
             genreID = "\(GenreIds.Adventure.rawValue)"
-            case "Animation":
+        case "Animation":
             genreID = "\(GenreIds.Animation.rawValue)"
         default:
             print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
@@ -47,7 +49,7 @@ class NetworkManager {
             }
             if let error = error {
                 print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
-               completion(nil, error)
+                completion(nil, error)
                 return
             }
             
@@ -59,6 +61,7 @@ class NetworkManager {
             
             do {
                 let moviesFromGenre = try JSONDecoder.snakecaseDecoder.decode(MovieDictionary.self, from: data).results
+                self.movies = moviesFromGenre
                 completion(moviesFromGenre, nil)
             } catch  {
                 print("Error in: \(#function)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)")
@@ -67,4 +70,38 @@ class NetworkManager {
         }.resume()
         
     }
+    
+    func sortMoviesByRatings(_ movies: [Movie]){
+        let sortedMovies = movies.sorted(by: { $0.voteAverage > $1.voteAverage})
+        for movie in sortedMovies {
+            print("This movie: \(movie.title) has ratings of: \(movie.voteAverage) stars")
+        }
+    }
+    
+    func sortMoviesByPopularity(_ movies: [Movie]){
+        let sortedMovies = movies.sorted(by: { $0.popularity > $1.popularity})
+        for movie in sortedMovies {
+            print("This movie: \(movie.title) popularitys has: \(movie.popularity) votes")
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -21,6 +21,11 @@ class SearchMovieTableViewController: UITableViewController {
             for movie in returnedMovies {
                 print("This is the movie's name: \(movie.title) and the genre: \(movie.genreIds)")
             }
+            print("**************************************************************************************")
+            network.sortMoviesByRatings(returnedMovies)
+            
+            print("**************************************************************************************")
+            network.sortMoviesByPopularity(returnedMovies)
         }
     }
 
