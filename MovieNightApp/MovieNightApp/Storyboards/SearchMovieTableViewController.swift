@@ -12,12 +12,16 @@ class SearchMovieTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let network = NetworkManager()
+        network.fetchMoviesBy(genre: "Adventure") { (movies, error) in
+            guard let returnedMovies = movies else {
+                print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+                return
+            }
+            for movie in returnedMovies {
+                print("This is the movie's name: \(movie.title) and the genre: \(movie.genreIds)")
+            }
+        }
     }
 
     // MARK: - Table view data source

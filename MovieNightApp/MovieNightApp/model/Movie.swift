@@ -12,7 +12,7 @@ class Movie: Codable {
     let voteAverage: Double
     let title: String
     let genreIds: [Int]
-    let poster_path: String
+    let posterPath: String
     let popularity: Double
     let overview: String
 }

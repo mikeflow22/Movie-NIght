@@ -18,23 +18,24 @@ class NetworkManager {
     private let apiKey = "3021207a0f44385e84ef7cc905fb9320"
     private let baseURL = URL(string: "https://api.themoviedb.org/3/search/movie")!
     
-    func fetchMoviesBy( genre: inout String, completion: @escaping([Movie]?, Error?) -> Void){
+    func fetchMoviesBy( genre: String, completion: @escaping([Movie]?, Error?) -> Void){
         let baseURL = URL(string: "https://api.themoviedb.org/3/discover/movie")!
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         
         //set the query items
-        switch genre {
+        var genreID = genre
+        switch genreID {
         case "Action":
-            genre = "\(GenreIds.Action.rawValue)"
+            genreID = "\(GenreIds.Action.rawValue)"
             case "Adventure":
-            genre = "\(GenreIds.Adventure.rawValue)"
+            genreID = "\(GenreIds.Adventure.rawValue)"
             case "Animation":
-            genre = "\(GenreIds.Animation.rawValue)"
+            genreID = "\(GenreIds.Animation.rawValue)"
         default:
             print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
         }
         
-        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: apiKey), URLQueryItem(name: "with_genres", value: genre)]
+        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: apiKey), URLQueryItem(name: "with_genres", value: genreID)]
         guard let finalURL = urlComponents?.url else {
             print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
             return
