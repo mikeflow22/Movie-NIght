@@ -9,7 +9,11 @@
 import Foundation
 
 class Movie: Codable {
-    private let apiKey = "3021207a0f44385e84ef7cc905fb9320"
-    private let baseURL = URL(string: "https://api.themoviedb.org/3/search/movie")!
+    let voteAverage: Double
+    let title: String
+    let genreIds: [Int]
+    let poster_path: String
+    let popularity: Double
+    let overview: String
     
 }
