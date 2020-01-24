@@ -15,5 +15,4 @@ class Movie: Codable {
     let poster_path: String
     let popularity: Double
     let overview: String
-    
 }
