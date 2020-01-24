@@ -66,6 +66,7 @@
 		1B3A896023DA8C73000280C1 /* MovieNightApp */ = {
 			isa = PBXGroup;
 			children = (
+				1BB3589623DB6DC3009F825A /* New Group */,
 				1BB3589323DB4B46009F825A /* Protocols */,
 				1B1D9C8A23DA9A4F002A37E3 /* model */,
 				1B75712F23DA90E20004EE51 /* Resources */,
@@ -108,6 +109,13 @@
 				1BB3589423DB4BB0009F825A /* URLConstructor.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1BB3589623DB6DC3009F825A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

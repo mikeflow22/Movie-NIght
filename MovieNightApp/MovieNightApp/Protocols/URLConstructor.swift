@@ -9,6 +9,5 @@
 import Foundation
 
 protocol URLConstructor: Codable {
-    var url: URL { get }
     static var path: String { get }
 }
