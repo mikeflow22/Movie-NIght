@@ -15,6 +15,7 @@
 		1B3A896E23DA8C74000280C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3A896C23DA8C74000280C1 /* LaunchScreen.storyboard */; };
 		1BB3589523DB4BB0009F825A /* URLConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589423DB4BB0009F825A /* URLConstructor.swift */; };
 		1BB3589823DB6DEB009F825A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589723DB6DEB009F825A /* NetworkManager.swift */; };
+		1BB3589B23DB6E46009F825A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589A23DB6E46009F825A /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1B3A896F23DA8C74000280C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BB3589423DB4BB0009F825A /* URLConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstructor.swift; sourceTree = "<group>"; };
 		1BB3589723DB6DEB009F825A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1BB3589A23DB6E46009F825A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		1B3A896023DA8C73000280C1 /* MovieNightApp */ = {
 			isa = PBXGroup;
 			children = (
+				1BB3589923DB6E2D009F825A /* Extensions */,
 				1BB3589623DB6DC3009F825A /* Netowking */,
 				1BB3589323DB4B46009F825A /* Protocols */,
 				1B1D9C8A23DA9A4F002A37E3 /* model */,
@@ -119,6 +122,14 @@
 				1BB3589723DB6DEB009F825A /* NetworkManager.swift */,
 			);
 			path = Netowking;
+			sourceTree = "<group>";
+		};
+		1BB3589923DB6E2D009F825A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1BB3589A23DB6E46009F825A /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BB3589523DB4BB0009F825A /* URLConstructor.swift in Sources */,
+				1BB3589B23DB6E46009F825A /* Extensions.swift in Sources */,
 				1B3A896223DA8C73000280C1 /* AppDelegate.swift in Sources */,
 				1BB3589823DB6DEB009F825A /* NetworkManager.swift in Sources */,
 				1B3A896423DA8C73000280C1 /* SceneDelegate.swift in Sources */,
