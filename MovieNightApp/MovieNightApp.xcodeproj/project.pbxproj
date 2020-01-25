@@ -19,6 +19,7 @@
 		1BB3589D23DB711B009F825A /* TopLevelDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589C23DB711B009F825A /* TopLevelDictionary.swift */; };
 		1BB3589F23DB7A78009F825A /* MovieDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589E23DB7A78009F825A /* MovieDictionary.swift */; };
 		1BB358A123DB7B05009F825A /* SearchMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB358A023DB7B05009F825A /* SearchMovieTableViewController.swift */; };
+		1BB358A323DBC380009F825A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB358A223DBC380009F825A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1BB3589C23DB711B009F825A /* TopLevelDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLevelDictionary.swift; sourceTree = "<group>"; };
 		1BB3589E23DB7A78009F825A /* MovieDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDictionary.swift; sourceTree = "<group>"; };
 		1BB358A023DB7B05009F825A /* SearchMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchMovieTableViewController.swift; path = MovieNightApp/Storyboards/SearchMovieTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		1BB358A223DBC380009F825A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				1B1D9C8B23DA9A91002A37E3 /* Movie.swift */,
 				1BB3589E23DB7A78009F825A /* MovieDictionary.swift */,
+				1BB358A223DBC380009F825A /* User.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				1BB3589823DB6DEB009F825A /* NetworkManager.swift in Sources */,
 				1B3A896423DA8C73000280C1 /* SceneDelegate.swift in Sources */,
 				1BB3589F23DB7A78009F825A /* MovieDictionary.swift in Sources */,
+				1BB358A323DBC380009F825A /* User.swift in Sources */,
 				1B1D9C8C23DA9A91002A37E3 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
