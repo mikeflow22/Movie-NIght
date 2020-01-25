@@ -10,7 +10,10 @@ import Foundation
 
 class User {
     var didPickMovie: Bool = false
-    var seletedMovie: Movie?
+    var selectedMovie: Movie?
     var identifier = UUID().uuidString
     
+     init(selectedMovie: Movie?){
+        self.selectedMovie = selectedMovie
+    }
 }
