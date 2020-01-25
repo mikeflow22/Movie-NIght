@@ -6,7 +6,8 @@
 //  Copyright © 2020 Michael Flowers. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
 enum GenreIds: Int {
     case Action = 28
     case Adventure = 12
@@ -105,7 +106,32 @@ class NetworkManager {
                 completion(nil, error)
             }
         }.resume()
+    }
+    
+    func fetchMoviePosterFor(movie: Movie, completion: @escaping (UIImage?, Error?) -> Void){
+        let movieURL = URL(string: "http://image.tmdb.org/t/p/w500")!
+        let appendingURL  = movieURL.appendingPathComponent(movie.posterPath)
         
+        URLSession.shared.dataTask(with: appendingURL) { (data, response, error) in
+            if let response = response as? HTTPURLResponse {
+                print("Response: \(response.statusCode)")
+            }
+            if let error = error {
+                print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
+               completion(nil, error)
+                return
+            }
+            guard let data = data else {
+                completion(nil, NSError())
+                return
+            }
+            if let imageFromData = UIImage(data: data) {
+                completion(imageFromData, nil)
+            }  else {
+                print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+                completion(nil, NSError())
+            }
+        }.resume()
     }
     
     func sortMoviesByRatings(_ movies: [Movie]){
