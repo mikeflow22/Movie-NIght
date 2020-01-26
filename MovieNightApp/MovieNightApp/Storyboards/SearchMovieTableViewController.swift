@@ -10,6 +10,16 @@ import UIKit
 
 class SearchMovieTableViewController: UITableViewController {
     
+    var genres: [Genre]? {
+        didSet {
+            print("genres was hit")
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let network = NetworkManager()
@@ -70,6 +80,8 @@ class SearchMovieTableViewController: UITableViewController {
                 print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
                 return
             }
+            self.genres = returnedGenres
+            
             for genre in returnedGenres {
                 print("Genre: \(genre.name) id = \(genre.id)")
             }
@@ -79,25 +91,21 @@ class SearchMovieTableViewController: UITableViewController {
 
 // MARK: - Table view data source
 
-override func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
-    return 0
-}
-
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return 0
+    return genres?.count ?? 0
 }
 
-/*
+
  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
- let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
- 
+ let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath) as! GenreTableViewCell
+    let genre = genres?[indexPath.row]
+    cell.genreNameLabel.text = genre?.name
  // Configure the cell...
  
  return cell
  }
- */
+
 
 /*
  // Override to support conditional editing of the table view.
