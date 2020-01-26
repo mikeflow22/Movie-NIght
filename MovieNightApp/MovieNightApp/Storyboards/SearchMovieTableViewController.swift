@@ -28,37 +28,53 @@ class SearchMovieTableViewController: UITableViewController {
         //            network.sortMoviesByPopularity(returnedMovies)
         //        }
         
-        network.fetchTrendingMovies { (movies, error) in
+//        network.fetchTrendingMovies { (movies, error) in
+//            if let error = error {
+//                print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
+//                return
+//            }
+//            guard let returnedMovies = movies else {
+//                print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+//                return
+//            }
+//
+//        for movie in returnedMovies {
+//            print("This movie: \(movie.title) is trending!")
+//            network.fetchMoviePosterFor(movie: movie) { (image, error) in
+//                if let error = error {
+//                    print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
+//                    return
+//                }
+//                guard let returnedImage = image else {
+//                    print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+//                    return
+//                }
+//                print("This is the byte of the image for movie:  \(movie.title) -- bytes: \(returnedImage.pngData()?.count)")
+//            }
+//        }
+//
+//        print("**************************************************************************************")
+//        network.sortMoviesByRatings(returnedMovies)
+//
+//        print("**************************************************************************************")
+//        network.sortMoviesByPopularity(returnedMovies)
+//    }
+        
+        network.fetchGenres { (genres, error) in
             if let error = error {
                 print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
                 return
             }
-            guard let returnedMovies = movies else {
+            
+            guard let returnedGenres = genres else {
                 print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
                 return
             }
-            
-        for movie in returnedMovies {
-            print("This movie: \(movie.title) is trending!")
-            network.fetchMoviePosterFor(movie: movie) { (image, error) in
-                if let error = error {
-                    print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
-                    return
-                }
-                guard let returnedImage = image else {
-                    print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-                    return
-                }
-                print("This is the byte of the image for movie:  \(movie.title) -- bytes: \(returnedImage.pngData()?.count)")
+            for genre in returnedGenres {
+                print("Genre: \(genre.name) id = \(genre.id)")
             }
         }
-            
-        print("**************************************************************************************")
-        network.sortMoviesByRatings(returnedMovies)
         
-        print("**************************************************************************************")
-        network.sortMoviesByPopularity(returnedMovies)
-    }
 }
 
 // MARK: - Table view data source
