@@ -125,6 +125,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="genreNameLabel" destination="b7J-Et-x4Z" id="ydx-Sc-VtZ"/>
+                                    <segue destination="gaX-z3-cDC" kind="show" identifier="showSortSegue" id="Dqk-pu-sgZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -139,6 +140,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8E9-hj-cXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1507" y="76"/>
+        </scene>
+        <!--Sort Movie View Controller-->
+        <scene sceneID="fSS-bX-4Xo">
+            <objects>
+                <viewController id="gaX-z3-cDC" customClass="SortMovieViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fmc-q2-tzD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ubS-Ub-IfM">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Ratings"/>
+                                    <segment title="In Theater"/>
+                                    <segment title="Popularity"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cOj-nI-yVj">
+                                <rect key="frame" x="0.0" y="119" width="414" height="743"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sortMovieCell" id="oar-TU-aWy">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oar-TU-aWy" id="Ded-Uk-yMw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gaX-z3-cDC" id="i3F-d0-3Un"/>
+                                    <outlet property="delegate" destination="gaX-z3-cDC" id="nsH-V6-Fp2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="akI-pe-eHY" firstAttribute="bottom" secondItem="cOj-nI-yVj" secondAttribute="bottom" id="DfX-Sl-CeK"/>
+                            <constraint firstItem="cOj-nI-yVj" firstAttribute="top" secondItem="ubS-Ub-IfM" secondAttribute="bottom" id="MPV-P1-Jw8"/>
+                            <constraint firstItem="akI-pe-eHY" firstAttribute="trailing" secondItem="ubS-Ub-IfM" secondAttribute="trailing" id="SKL-Pl-Mty"/>
+                            <constraint firstItem="ubS-Ub-IfM" firstAttribute="leading" secondItem="akI-pe-eHY" secondAttribute="leading" id="SRl-Xl-ISp"/>
+                            <constraint firstItem="cOj-nI-yVj" firstAttribute="leading" secondItem="akI-pe-eHY" secondAttribute="leading" id="d8Y-ac-ypS"/>
+                            <constraint firstItem="ubS-Ub-IfM" firstAttribute="top" secondItem="akI-pe-eHY" secondAttribute="top" id="ver-jm-jwO"/>
+                            <constraint firstItem="akI-pe-eHY" firstAttribute="trailing" secondItem="cOj-nI-yVj" secondAttribute="trailing" id="y6Y-pa-sOV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="akI-pe-eHY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="w4r-DR-XJB"/>
+                    <connections>
+                        <outlet property="myTableView" destination="cOj-nI-yVj" id="H40-69-5K6"/>
+                        <outlet property="segmentedControl" destination="ubS-Ub-IfM" id="6hl-pz-fxv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUO-4d-c8Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2213" y="78"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aUC-1B-8ts">

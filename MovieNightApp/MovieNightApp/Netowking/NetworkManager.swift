@@ -23,24 +23,24 @@ class NetworkManager {
     private let apiKey = "3021207a0f44385e84ef7cc905fb9320"
     private let baseURL = URL(string: "https://api.themoviedb.org/3/search/movie")!
     
-    func fetchMoviesBy( genre: String, completion: @escaping([Movie]?, Error?) -> Void){
+    func fetchMoviesBy( genre: Int, completion: @escaping([Movie]?, Error?) -> Void){
         let baseURL = URL(string: "https://api.themoviedb.org/3/discover/movie")!
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+//
+//        //set the query items
+//        var genreID = genre
+//        switch genreID {
+//        case "Action":
+//            genreID = "\(GenreIds.Action.rawValue)"
+//        case "Adventure":
+//            genreID = "\(GenreIds.Adventure.rawValue)"
+//        case "Animation":
+//            genreID = "\(GenreIds.Animation.rawValue)"
+//        default:
+//            print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+//        }
         
-        //set the query items
-        var genreID = genre
-        switch genreID {
-        case "Action":
-            genreID = "\(GenreIds.Action.rawValue)"
-        case "Adventure":
-            genreID = "\(GenreIds.Adventure.rawValue)"
-        case "Animation":
-            genreID = "\(GenreIds.Animation.rawValue)"
-        default:
-            print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-        }
-        
-        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: apiKey), URLQueryItem(name: "with_genres", value: genreID)]
+        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: apiKey), URLQueryItem(name: "with_genres", value: "\(genre)")]
         guard let finalURL = urlComponents?.url else {
             print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
             return
@@ -173,18 +173,18 @@ class NetworkManager {
         }.resume()
     }
     
-    func sortMoviesByRatings(_ movies: [Movie]){
-        let sortedMovies = movies.sorted(by: { $0.voteAverage > $1.voteAverage})
-        for movie in sortedMovies {
-            print("This movie: \(movie.title) has ratings of: \(movie.voteAverage) stars")
-        }
+    func sortMoviesByRatings(_ movies: [Movie]) -> [Movie]{
+        return  movies.sorted(by: { $0.voteAverage > $1.voteAverage})
+//        for movie in sortedMovies {
+//            print("This movie: \(movie.title) has ratings of: \(movie.voteAverage) stars")
+//        }
     }
     
-    func sortMoviesByPopularity(_ movies: [Movie]){
-        let sortedMovies = movies.sorted(by: { $0.popularity > $1.popularity})
-        for movie in sortedMovies {
-            print("This movie: \(movie.title) popularitys has: \(movie.popularity) votes")
-        }
+    func sortMoviesByPopularity(_ movies: [Movie]) -> [Movie] {
+        return movies.sorted(by: { $0.popularity > $1.popularity})
+//        for movie in sortedMovies {
+//            print("This movie: \(movie.title) popularitys has: \(movie.popularity) votes")
+//        }
     }
     
     

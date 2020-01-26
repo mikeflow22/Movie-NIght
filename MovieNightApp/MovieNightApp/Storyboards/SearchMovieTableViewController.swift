@@ -10,6 +10,7 @@ import UIKit
 
 class SearchMovieTableViewController: UITableViewController {
     
+    let network =  NetworkManager()
     var genres: [Genre]? {
         didSet {
             print("genres was hit")
@@ -22,7 +23,7 @@ class SearchMovieTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let network = NetworkManager()
+        
         //        network.fetchMoviesBy(genre: "Adventure") { (movies, error) in
         //            guard let returnedMovies = movies else {
         //                print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
@@ -81,6 +82,7 @@ class SearchMovieTableViewController: UITableViewController {
                 return
             }
             self.genres = returnedGenres
+            print("*********************** \(returnedGenres.count)")
             
             for genre in returnedGenres {
                 print("Genre: \(genre.name) id = \(genre.id)")
@@ -101,6 +103,7 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
  let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath) as! GenreTableViewCell
     let genre = genres?[indexPath.row]
     cell.genreNameLabel.text = genre?.name
+    print("\(genre?.name)")
  // Configure the cell...
  
  return cell
@@ -142,14 +145,30 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
  }
  */
 
-/*
  // MARK: - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
+    if segue.identifier == "showSortSegue" {
+        guard let destinationVC = segue.destination as? SortMovieViewController else {
+            print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+            return
+        }
+        
+        guard let index = tableView.indexPathForSelectedRow  else {
+                   print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+                   return
+        }
+        
+        guard let genres = self.genres else {
+            print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+            return
+        }
+            
+        let idToPass = genres[index.row].id
+        destinationVC.id = idToPass
+        destinationVC.network = network
+    }
  }
- */
 
 }
