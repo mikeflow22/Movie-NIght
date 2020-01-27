@@ -15,4 +15,10 @@ class Movie: Codable {
     let posterPath: String
     let popularity: Double
     let overview: String
+    let releaseDate: String
+    
+    var date: Date? {
+        let formatter = DateFormatter()
+        return formatter.date(from: releaseDate)
+    }
 }
