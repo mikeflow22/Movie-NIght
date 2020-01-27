@@ -31,53 +31,6 @@ class SearchMovieTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        network.fetchMoviesBy(genre: "Adventure") { (movies, error) in
-        //            guard let returnedMovies = movies else {
-        //                print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-        //                return
-        //            }
-        //            for movie in returnedMovies {
-        //                print("This is the movie's name: \(movie.title) and the genre: \(movie.genreIds)")
-        //            }
-        //            print("**************************************************************************************")
-        //            network.sortMoviesByRatings(returnedMovies)
-        //
-        //            print("**************************************************************************************")
-        //            network.sortMoviesByPopularity(returnedMovies)
-        //        }
-        
-//        network.fetchTrendingMovies { (movies, error) in
-//            if let error = error {
-//                print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
-//                return
-//            }
-//            guard let returnedMovies = movies else {
-//                print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-//                return
-//            }
-//
-//        for movie in returnedMovies {
-//            print("This movie: \(movie.title) is trending!")
-//            network.fetchMoviePosterFor(movie: movie) { (image, error) in
-//                if let error = error {
-//                    print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
-//                    return
-//                }
-//                guard let returnedImage = image else {
-//                    print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-//                    return
-//                }
-//                print("This is the byte of the image for movie:  \(movie.title) -- bytes: \(returnedImage.pngData()?.count)")
-//            }
-//        }
-//
-//        print("**************************************************************************************")
-//        network.sortMoviesByRatings(returnedMovies)
-//
-//        print("**************************************************************************************")
-//        network.sortMoviesByPopularity(returnedMovies)
-//    }
-        
         network.fetchGenres { (genres, error) in
             if let error = error {
                 print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
@@ -95,55 +48,59 @@ class SearchMovieTableViewController: UITableViewController {
                 print("Genre: \(genre.name) id = \(genre.id)")
             }
         }
-        
-}
-
-// MARK: - Table view data source
-
-override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
-    return genres?.count ?? 0
-}
-
-
- override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
- let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath) as! GenreTableViewCell
-    let genre = genres?[indexPath.row]
-    cell.genreNameLabel.text = genre?.name
+    }
     
-    //add a check mark
-    print("\(genre?.name)")
- // Configure the cell...
- 
- return cell
- }
+    // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return genres?.count ?? 0
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath) as! GenreTableViewCell
+        if let genre = genres?[indexPath.row] {
+            cell.genreNameLabel.text = genre.name
+            
+            //add a check mark
+            if selectedGenres.contains(genre) {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+        }
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        //get the genre that was selected
+        guard let genre = genres?[indexPath.row] else { return }
+        
+        if selectedGenres.contains(genre) {
+            //if genre is already in the set - remove it
+            selectedGenres.remove(genre)
+        } else {
+            //if not, then insert it into the set
+            selectedGenres.insert(genre)
+        }
+        //reload tableView
+        tableView.reloadData()
+    }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
-    }
-    
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "showSortSegue" {
-        guard let destinationVC = segue.destination as? SortMovieViewController else {
-            print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+        //check to see if selectedGenres has value, that it is not empty
+        guard !selectedGenres.isEmpty else {
+            //present alert
             return
         }
         
-        guard let index = tableView.indexPathForSelectedRow  else {
-                   print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-                   return
-        }
-        
-        guard let genres = self.genres else {
-            print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-            return
-        }
-        
-        let id = genres[index.row].id
-        destinationVC.id = id
-        destinationVC.network = network
+        //pass the selectedGenres to the delegate - mainViewController -notify the delegate that genres were selected
+        self.delegate?.searchMovieViewController(self, didSelectGenres: self.selectedGenres)
+        dismiss(animated: true)
     }
- }
-
 }
+

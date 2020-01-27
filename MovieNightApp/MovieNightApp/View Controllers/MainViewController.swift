@@ -70,7 +70,10 @@ class MainViewController: UIViewController {
             
             sortVC.selectedIds = matchingGenreIds
             
-            present(sortVC, animated: true)
+            present(sortVC, animated: true) {
+                self.user1 = nil
+                self.user2 = nil
+            }
         }
     }
 
