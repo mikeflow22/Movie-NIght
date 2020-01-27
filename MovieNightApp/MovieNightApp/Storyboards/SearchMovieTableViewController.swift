@@ -7,10 +7,17 @@
 //
 
 import UIKit
+//we need to pass the selected genres back to the main view controller so that we can initialize a user with the genres they selected
+protocol SearchMovieDelegate: class {
+    func searchMovieViewController(_ searchMovieViewController: SearchMovieTableViewController, didSelectGenres genres: Set<Genre>)
+}
 
 class SearchMovieTableViewController: UITableViewController {
     
     let network =  NetworkManager()
+    var selectedGenres: Set<Genre> = []
+    weak var delegate: SearchMovieDelegate?
+    
     var genres: [Genre]? {
         didSet {
             print("genres was hit")
