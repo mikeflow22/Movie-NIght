@@ -7,14 +7,6 @@
 //
 
 import UIKit
-
-enum GenreIds: Int {
-    case Action = 28
-    case Adventure = 12
-    case Animation = 16
-    case Comedy = 35
-    case Crime = 80
-}
 class NetworkManager {
     var movies = [Movie]()
     var trendingMovies: [Movie] = []
@@ -23,24 +15,16 @@ class NetworkManager {
     private let apiKey = "3021207a0f44385e84ef7cc905fb9320"
     private let baseURL = URL(string: "https://api.themoviedb.org/3/search/movie")!
     
-    func fetchMoviesBy( genre: Int, completion: @escaping([Movie]?, Error?) -> Void){
+    func fetchMoviesBy( genres: [Int], completion: @escaping([Movie]?, Error?) -> Void){
         let baseURL = URL(string: "https://api.themoviedb.org/3/discover/movie")!
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-//
-//        //set the query items
-//        var genreID = genre
-//        switch genreID {
-//        case "Action":
-//            genreID = "\(GenreIds.Action.rawValue)"
-//        case "Adventure":
-//            genreID = "\(GenreIds.Adventure.rawValue)"
-//        case "Animation":
-//            genreID = "\(GenreIds.Animation.rawValue)"
-//        default:
-//            print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-//        }
         
-        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: apiKey), URLQueryItem(name: "with_genres", value: "\(genre)")]
+        //turn the array of ints into strings so we can create a query item of it
+        let genreStrings = genres.compactMap { String($0) }
+        //now separate the array of int strings by a comma
+        let joinedGenreStrings = genreStrings.joined()
+        
+        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: apiKey), URLQueryItem(name: "with_genres", value: joinedGenreStrings)]
         guard let finalURL = urlComponents?.url else {
             print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
             return
@@ -175,19 +159,15 @@ class NetworkManager {
     
     func sortMoviesByRatings(_ movies: [Movie]) -> [Movie]{
         return  movies.sorted(by: { $0.voteAverage > $1.voteAverage})
-//        for movie in sortedMovies {
-//            print("This movie: \(movie.title) has ratings of: \(movie.voteAverage) stars")
-//        }
     }
     
     func sortMoviesByPopularity(_ movies: [Movie]) -> [Movie] {
         return movies.sorted(by: { $0.popularity > $1.popularity})
-//        for movie in sortedMovies {
-//            print("This movie: \(movie.title) popularitys has: \(movie.popularity) votes")
-//        }
     }
     
-    
+    func sortMoviesByReleaseDate(_ movies: [Movie]) -> [Movie] {
+        return movies.sorted(by: { $0.date! > $1.date! })
+    }
     
     
     

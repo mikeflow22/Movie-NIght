@@ -14,7 +14,7 @@ protocol SearchMovieDelegate: class {
 
 class SearchMovieTableViewController: UITableViewController {
     
-    let network =  NetworkManager()
+    let network = NetworkManager()
     var selectedGenres: Set<Genre> = []
     weak var delegate: SearchMovieDelegate?
     
@@ -110,6 +110,8 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
  let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath) as! GenreTableViewCell
     let genre = genres?[indexPath.row]
     cell.genreNameLabel.text = genre?.name
+    
+    //add a check mark
     print("\(genre?.name)")
  // Configure the cell...
  
