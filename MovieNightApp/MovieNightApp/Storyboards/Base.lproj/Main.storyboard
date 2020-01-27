@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="Nek-a2-1V4">
             <objects>
-                <viewController id="qex-FB-EBw" sceneMemberID="viewController">
+                <viewController id="qex-FB-EBw" customClass="MainViewController" customModule="MovieNightApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UCq-dV-SnF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,6 +60,16 @@
                                     <constraint firstAttribute="height" constant="60" id="lMp-f9-3X9"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xh-MT-z1k">
+                                <rect key="frame" x="151.5" y="794" width="111" height="57"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="qex-FB-EBw" eventType="touchUpInside" id="uGn-cq-vgA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.58072251080000004" green="0.20000847115343251" blue="0.20325782583419549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -68,12 +78,14 @@
                             <constraint firstItem="cAG-GU-Yww" firstAttribute="centerX" secondItem="UCq-dV-SnF" secondAttribute="centerX" id="HE6-xs-R30"/>
                             <constraint firstItem="jOy-kb-oza" firstAttribute="leading" secondItem="k2s-Oh-wMH" secondAttribute="leading" id="OW7-ZZ-a0z"/>
                             <constraint firstItem="k2s-Oh-wMH" firstAttribute="bottom" secondItem="jOy-kb-oza" secondAttribute="bottom" id="Rbf-ri-ebq"/>
+                            <constraint firstItem="k2s-Oh-wMH" firstAttribute="bottom" secondItem="4Xh-MT-z1k" secondAttribute="bottom" constant="11" id="XbE-RS-8a5"/>
                             <constraint firstItem="k2s-Oh-wMH" firstAttribute="trailing" secondItem="jOy-kb-oza" secondAttribute="trailing" id="egX-Ok-cgC"/>
                             <constraint firstItem="jOy-kb-oza" firstAttribute="top" secondItem="k2s-Oh-wMH" secondAttribute="top" constant="68" id="fM6-OC-MWe"/>
                             <constraint firstItem="nhX-fz-tdm" firstAttribute="top" secondItem="cAG-GU-Yww" secondAttribute="bottom" constant="235" id="gl9-qj-Z54"/>
                             <constraint firstItem="k2s-Oh-wMH" firstAttribute="trailing" secondItem="cAG-GU-Yww" secondAttribute="trailing" id="jNH-UG-mAa"/>
                             <constraint firstItem="cAG-GU-Yww" firstAttribute="leading" secondItem="k2s-Oh-wMH" secondAttribute="leading" id="jiV-bo-nsG"/>
                             <constraint firstItem="cAG-GU-Yww" firstAttribute="top" secondItem="k2s-Oh-wMH" secondAttribute="top" constant="9" id="nIp-pq-19s"/>
+                            <constraint firstItem="4Xh-MT-z1k" firstAttribute="centerX" secondItem="UCq-dV-SnF" secondAttribute="centerX" id="sZV-vb-Wwv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k2s-Oh-wMH"/>
                     </view>
