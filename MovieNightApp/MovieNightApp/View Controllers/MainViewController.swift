@@ -21,6 +21,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+        user1 = nil
+        user2 = nil
+         user1PropertiesForButton.setImage(UIImage(named: "bubble-empty"), for: .normal)
+         user2PropertiesForButton.setImage(UIImage(named: "bubble-empty"), for: .normal)
+    }
     
     @IBAction func user1ButtonTapped(_ sender: UIButton) {
         //if selected we want to initialize the search view controller - set the storyboard's ID for the nav controller
@@ -63,6 +69,8 @@ class MainViewController: UIViewController {
             let matchingGenreIds = matchingGenres.compactMap { $0.id }
             
             sortVC.selectedIds = matchingGenreIds
+            
+            present(sortVC, animated: true)
         }
     }
 
@@ -74,8 +82,10 @@ extension MainViewController : SearchMovieDelegate {
     func searchMovieViewController(_ searchMovieViewController: SearchMovieTableViewController, didSelectGenres genres: Set<Genre>) {
         if let _ = user1 {
             user2 = User(selectedGenres: genres)
+            self.user2PropertiesForButton.setImage(UIImage(named: "bubble-selected"), for: .normal)
         }  else {
             user1 = User(selectedGenres: genres)
+             self.user1PropertiesForButton.setImage(UIImage(named: "bubble-selected"), for: .normal)
         }
     }
 }
