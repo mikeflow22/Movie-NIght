@@ -65,14 +65,17 @@ class MainViewController: UIViewController {
             sortVC.selectedIds = matchingGenreIds
         }
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+
+extension MainViewController : SearchMovieDelegate {
+    
+    //use this delegate function to initialize a user with selectedGenres
+    func searchMovieViewController(_ searchMovieViewController: SearchMovieTableViewController, didSelectGenres genres: Set<Genre>) {
+        if let _ = user1 {
+            user2 = User(selectedGenres: genres)
+        }  else {
+            user1 = User(selectedGenres: genres)
+        }
     }
-    */
-
 }
