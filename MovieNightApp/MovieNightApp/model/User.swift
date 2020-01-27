@@ -9,11 +9,10 @@
 import Foundation
 
 class User {
-    var didPickMovie: Bool = false
-    var selectedMovie: Movie?
-    var identifier = UUID().uuidString
+    var didPickGenre: Bool = false
+    var selectedGenres: Set<Genre>?
     
-     init(selectedMovie: Movie?){
-        self.selectedMovie = selectedMovie
+    init(selectedGenres: Set<Genre>?){
+        self.selectedGenres = selectedGenres
     }
 }
