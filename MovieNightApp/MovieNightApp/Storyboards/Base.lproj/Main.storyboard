@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bcn-ks-NhM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qex-FB-EBw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -25,10 +25,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkH-pQ-djx">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="200"/>
                                         <state key="normal" image="bubble-empty"/>
+                                        <connections>
+                                            <action selector="user1ButtonTapped:" destination="qex-FB-EBw" eventType="touchUpInside" id="Uij-Ar-sr0"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHY-jL-pZs">
                                         <rect key="frame" x="204" y="0.0" width="196" height="200"/>
                                         <state key="normal" image="bubble-empty"/>
+                                        <connections>
+                                            <action selector="user2ButtonTapped:" destination="qex-FB-EBw" eventType="touchUpInside" id="vf8-jz-07p"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -89,6 +95,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k2s-Oh-wMH"/>
                     </view>
+                    <connections>
+                        <outlet property="user1PropertiesForButton" destination="pkH-pQ-djx" id="NB4-o0-MEv"/>
+                        <outlet property="user2PropertiesForButton" destination="kHY-jL-pZs" id="gd5-pq-MlE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4aS-G9-Hm6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -212,7 +222,7 @@
         <!--Navigation Controller-->
         <scene sceneID="aUC-1B-8ts">
             <objects>
-                <navigationController id="Bcn-ks-NhM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SearchMovieNavController" id="Bcn-ks-NhM" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="2Kf-Ad-nAn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ww6-xI-mE7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

@@ -115,9 +115,9 @@
 		1B75712E23DA90C90004EE51 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B1063EB23DF8D3F00A1785D /* MainViewController.swift */,
 				1BB358A023DB7B05009F825A /* SearchMovieTableViewController.swift */,
 				1B483FFD23DD419D0013E827 /* SortMovieViewController.swift */,
-				1B1063EB23DF8D3F00A1785D /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

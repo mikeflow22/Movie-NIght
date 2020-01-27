@@ -26,25 +26,10 @@ class SortMovieViewController: UIViewController {
             }
         }
     }
+    var selectedIds: [Int] = []
     var id: Int? {
         didSet {
-            if let id = id, let network = network {
-                print("id did hit")
-                network.fetchMoviesBy(genre: id) { (movies, error) in
-                    if let error = error {
-                        print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
-                        return
-                    }
-                    if let movies = movies {
-                        self.movies = movies
-                    } else {
-                        print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-                    }
-                }
-            } else {
-                print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
-                
-            }
+            if let id = id,
         }
     }
     
@@ -53,7 +38,25 @@ class SortMovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("id in viewdid load: \(id)")
+        print("ids in viewdid load: \(selectedIds)")
+        
+        let network = network {
+            print("id did hit")
+            network.fetchMoviesBy(genres: selectedIds) { (movies, error) in
+                if let error = error {
+                    print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
+                    return
+                }
+                if let movies = movies {
+                    self.movies = movies
+                } else {
+                    print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+                }
+            }
+        } else {
+            print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+            
+        }
     }
     
     func populateTableViews(movies: [Movie]) -> [Movie]{
