@@ -24,7 +24,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkH-pQ-djx">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="200"/>
-                                        <state key="normal" image="bubble-selected"/>
+                                        <state key="normal" image="bubble-empty"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHY-jL-pZs">
                                         <rect key="frame" x="204" y="0.0" width="196" height="200"/>
@@ -91,28 +91,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="genreCell" id="BV7-S2-Ewq" customClass="GenreTableViewCell" customModule="MovieNightApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="46.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="37"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BV7-S2-Ewq" id="ys4-Kw-MVS">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="46.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-Ye-8T7">
-                                            <rect key="frame" x="8" y="8" width="398" height="30.5"/>
+                                            <rect key="frame" x="8" y="8" width="398" height="21"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7J-Et-x4Z">
-                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="30.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHg-3x-R4f">
-                                                    <rect key="frame" x="352" y="0.0" width="46" height="30.5"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="selectButtonTapped:" destination="BV7-S2-Ewq" eventType="touchUpInside" id="3xM-Py-26w"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -135,7 +128,13 @@
                             <outlet property="delegate" destination="heC-4R-o9r" id="u6c-Eq-oJG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search Movie by Genre" id="oSZ-LV-GDF"/>
+                    <navigationItem key="navigationItem" title="Search Movie by Genre" id="oSZ-LV-GDF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="1uP-M1-IAs">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="heC-4R-o9r" id="ut0-wn-KOq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8E9-hj-cXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -144,7 +143,7 @@
         <!--Sort Movie View Controller-->
         <scene sceneID="fSS-bX-4Xo">
             <objects>
-                <viewController id="gaX-z3-cDC" customClass="SortMovieViewController" customModule="MovieNightApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SortMoviesVC" id="gaX-z3-cDC" customClass="SortMovieViewController" customModule="MovieNightApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fmc-q2-tzD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,6 +218,5 @@
     <resources>
         <image name="bg-iphone6plus" width="1241" height="2209"/>
         <image name="bubble-empty" width="123.5" height="97.5"/>
-        <image name="bubble-selected" width="123.5" height="97.5"/>
     </resources>
 </document>
