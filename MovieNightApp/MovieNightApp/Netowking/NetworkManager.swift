@@ -166,7 +166,13 @@ class NetworkManager {
     }
     
     func sortMoviesByReleaseDate(_ movies: [Movie]) -> [Movie] {
-        return movies.sorted(by: { $0.date! > $1.date! })
+//        return movies.sorted(by: { $0.date! > $1.date! })
+        let sortedMoviesByDate  = movies.sorted(by: { if let movieDate1  = $0.date, let movieDate2 = $1.date {
+            return movieDate1 > movieDate2
+            }
+            return true
+        })
+        return sortedMoviesByDate
     }
     
     

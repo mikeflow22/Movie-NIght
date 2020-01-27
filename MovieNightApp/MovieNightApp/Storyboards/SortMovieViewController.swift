@@ -54,6 +54,9 @@ class SortMovieViewController: UIViewController {
     }
     
    func populateTableViews(movies: [Movie]) -> [Movie]{
+    guard !movies.isEmpty else {  print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+        return []
+    }
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             let movies = network.sortMoviesByRatings(movies)

@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
         //SearchMovieTableViewController has a delegate protocol and we want to be resonsible/notified when the protocol's function is triggered so we can initialize the users
         searchVC.delegate = self
         
-        present(searchVC, animated: true)
+        present(navController, animated: true)
         
     }
     
@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
         //SearchMovieTableViewController has a delegate protocol and we want to be resonsible/notified when the protocol's function is triggered so we can initialize the users
         searchVC.delegate = self
         
-        present(searchVC, animated: true)
+        present(navController, animated: true)
     }
     @IBAction func searchButtonTapped(_ sender: Any) {
         //check to see if both users have been initialize or that they hold value
