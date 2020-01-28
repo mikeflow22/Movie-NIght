@@ -26,6 +26,7 @@
 		1BB3589F23DB7A78009F825A /* MovieDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB3589E23DB7A78009F825A /* MovieDictionary.swift */; };
 		1BB358A123DB7B05009F825A /* SearchMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB358A023DB7B05009F825A /* SearchMovieTableViewController.swift */; };
 		1BB358A323DBC380009F825A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB358A223DBC380009F825A /* User.swift */; };
+		1BC3549B23E0ED7000F03593 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC3549A23E0ED7000F03593 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		1BB3589E23DB7A78009F825A /* MovieDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDictionary.swift; sourceTree = "<group>"; };
 		1BB358A023DB7B05009F825A /* SearchMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchMovieTableViewController.swift; path = MovieNightApp/Storyboards/SearchMovieTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1BB358A223DBC380009F825A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1BC3549A23E0ED7000F03593 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "MovieNightApp/Views /DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				1B1063EB23DF8D3F00A1785D /* MainViewController.swift */,
 				1BB358A023DB7B05009F825A /* SearchMovieTableViewController.swift */,
 				1B483FFD23DD419D0013E827 /* SortMovieViewController.swift */,
+				1BC3549A23E0ED7000F03593 /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BB3589523DB4BB0009F825A /* URLConstructor.swift in Sources */,
+				1BC3549B23E0ED7000F03593 /* DetailViewController.swift in Sources */,
 				1BB3589B23DB6E46009F825A /* Extensions.swift in Sources */,
 				1BB358A123DB7B05009F825A /* SearchMovieTableViewController.swift in Sources */,
 				1B483FF723DD2F510013E827 /* Genre.swift in Sources */,

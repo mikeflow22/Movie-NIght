@@ -9,8 +9,6 @@
 import UIKit
 
 class SortMovieCell: UITableViewCell {
-    var movie: Movie?
-    
     @IBOutlet weak var moiveImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,8 +17,5 @@ class SortMovieCell: UITableViewCell {
     
     @IBOutlet weak var overViewTextView: UITextView!
     
-//    func updateViews() {
-//        guard let passedInMovie = movie, let image
-//        
-//    }
+   
 }

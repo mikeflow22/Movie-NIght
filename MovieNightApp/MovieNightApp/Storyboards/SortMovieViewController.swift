@@ -67,9 +67,9 @@ class SortMovieViewController: UIViewController {
             return []
         }
     }
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+    //    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return 100
+    //    }
     
 }
 
@@ -79,10 +79,11 @@ extension SortMovieViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sortMovieCell", for: indexPath) as! SortMovieCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sortMovieCell", for: indexPath)
         
         guard let movie = movies?[indexPath.row] else { return UITableViewCell() }
-   
+        cell.textLabel?.text = movie.title
+        
         
         network.fetchMoviePosterFor(movie: movie) { (image, error) in
             if let error = error {
@@ -95,19 +96,24 @@ extension SortMovieViewController: UITableViewDelegate, UITableViewDataSource {
                     switch self.segmentedControl.selectedSegmentIndex {
                     case 0:
                         print("0")
-                        cell.textLabel?.text = movie.title
-                        cell.detailTextLabel?.text = "Ratings: \(movie.voteAverage)"
-                        cell.imageView?.image = returnedImage
+                        
+                        cell.titleLabel.text = movie.title
+                        cell.propertyLabel.text = "Ratings: \(movie.voteAverage)"
+                        cell.moiveImageView.image = returnedImage
+                        cell.overViewTextView.text = movie.overview
+                        
                     case 1:
                         print("1")
-                        cell.textLabel?.text = movie.title
-                        cell.detailTextLabel?.text = "Release Date: \(movie.releaseDate)"
-                        cell.imageView?.image = returnedImage
+                        cell.titleLabel.text = movie.title
+                        cell.propertyLabel.text = "In Theaters: \(movie.releaseDate)"
+                        cell.moiveImageView.image = returnedImage
+                        cell.overViewTextView.text = movie.overview
                     case 2:
                         print("2")
-                        cell.textLabel?.text = movie.title
-                        cell.detailTextLabel?.text = "Popularity: \(movie.popularity)"
-                        cell.imageView?.image = returnedImage
+                        cell.titleLabel.text = movie.title
+                        cell.propertyLabel.text = "Popularity: \(movie.popularity)"
+                        cell.moiveImageView.image = returnedImage
+                        cell.overViewTextView.text = movie.overview
                     default:
                         print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
                         break
