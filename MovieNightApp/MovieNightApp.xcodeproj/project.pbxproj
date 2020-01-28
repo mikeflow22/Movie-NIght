@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1B1063EC23DF8D3F00A1785D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1063EB23DF8D3F00A1785D /* MainViewController.swift */; };
-		1B1063EE23DFF90100A1785D /* SortMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1063ED23DFF90100A1785D /* SortMovieCell.swift */; };
 		1B1D9C8C23DA9A91002A37E3 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D9C8B23DA9A91002A37E3 /* Movie.swift */; };
 		1B3A896223DA8C73000280C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A896123DA8C73000280C1 /* AppDelegate.swift */; };
 		1B3A896423DA8C73000280C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A896323DA8C73000280C1 /* SceneDelegate.swift */; };
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		1B1063EB23DF8D3F00A1785D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		1B1063ED23DFF90100A1785D /* SortMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMovieCell.swift; sourceTree = "<group>"; };
 		1B1D9C8B23DA9A91002A37E3 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		1B3A895E23DA8C73000280C1 /* MovieNightApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieNightApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3A896123DA8C73000280C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				1B483FFA23DD368E0013E827 /* GenreTableViewCell.swift */,
-				1B1063ED23DFF90100A1785D /* SortMovieCell.swift */,
 			);
 			path = "Views ";
 			sourceTree = "<group>";
@@ -251,7 +248,6 @@
 				1B483FF723DD2F510013E827 /* Genre.swift in Sources */,
 				1BB3589D23DB711B009F825A /* TopLevelDictionary.swift in Sources */,
 				1B3A896223DA8C73000280C1 /* AppDelegate.swift in Sources */,
-				1B1063EE23DFF90100A1785D /* SortMovieCell.swift in Sources */,
 				1BB3589823DB6DEB009F825A /* NetworkManager.swift in Sources */,
 				1B483FFE23DD419D0013E827 /* SortMovieViewController.swift in Sources */,
 				1B3A896423DA8C73000280C1 /* SceneDelegate.swift in Sources */,

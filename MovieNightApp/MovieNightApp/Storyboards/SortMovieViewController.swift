@@ -67,10 +67,6 @@ class SortMovieViewController: UIViewController {
             return []
         }
     }
-    //    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return 100
-    //    }
-    
 }
 
 extension SortMovieViewController: UITableViewDelegate, UITableViewDataSource {
@@ -84,15 +80,7 @@ extension SortMovieViewController: UITableViewDelegate, UITableViewDataSource {
         guard let movie = movies?[indexPath.row] else { return UITableViewCell() }
         cell.textLabel?.text = movie.title
         
-        
-        network.fetchMoviePosterFor(movie: movie) { (image, error) in
-            if let error = error {
-                print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
-                return
-            }
-            if let returnedImage = image {
-                
-                DispatchQueue.main.async {
+             /*
                     switch self.segmentedControl.selectedSegmentIndex {
                     case 0:
                         print("0")
@@ -118,13 +106,9 @@ extension SortMovieViewController: UITableViewDelegate, UITableViewDataSource {
                         print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
                         break
                     }
-                }
-            }
-        }
-        
+    */
         
         return  cell
     }
-    
     
 }
