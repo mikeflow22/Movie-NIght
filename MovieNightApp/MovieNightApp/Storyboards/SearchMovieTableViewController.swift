@@ -31,6 +31,7 @@ class SearchMovieTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //fetch genres to populate tableView
         network.fetchGenres { (genres, error) in
             if let error = error {
                 print("Error in file: \(#file) in the body of the function: \(#function)\n on line: \(#line)\n Readable Error: \(error.localizedDescription)\n Technical Error: \(error)\n")
@@ -41,12 +42,13 @@ class SearchMovieTableViewController: UITableViewController {
                 print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
                 return
             }
+            //assign the returned Genres to our stored property
             self.genres = returnedGenres
-            print("*********************** \(returnedGenres.count)")
+            print("***********************Returned Genres: \(returnedGenres.count)")
             
-            for genre in returnedGenres {
-                print("Genre: \(genre.name) id = \(genre.id)")
-            }
+//            for genre in returnedGenres {
+//                print("Genre: \(genre.name) id = \(genre.id)")
+//            }
         }
     }
     
@@ -79,14 +81,16 @@ class SearchMovieTableViewController: UITableViewController {
         
         //get the genre that was selected
         guard let genre = genres?[indexPath.row] else { return }
+        selectedGenres.insert(genre)
         
-        if selectedGenres.contains(genre) {
-            //if genre is already in the set - remove it
-            selectedGenres.remove(genre)
-        } else {
-            //if not, then insert it into the set
-            selectedGenres.insert(genre)
-        }
+//        if selectedGenres.contains(genre) {
+//            //if genre is already in the set - remove it
+//            selectedGenres.remove(genre)
+//        } else {
+//            //if not, then insert it into the set
+//            selectedGenres.insert(genre)
+//        }
+        
         //reload tableView
         tableView.reloadData()
     }

@@ -21,14 +21,17 @@ class NetworkManager {
         
         //turn the array of ints into strings so we can create a query item of it
         let genreStrings = genres.compactMap { String($0) }
-        //now separate the array of int strings by a comma
-        let joinedGenreStrings = genreStrings.joined()
+        
+        //now separate the array of intStrings by a comma to form a "single" string
+        let joinedGenreStrings = genreStrings.joined(separator: ",")
+        print("GENRE STRING ARRAY SEPARATED BY COMMA: \(joinedGenreStrings)")
         
         urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: apiKey), URLQueryItem(name: "with_genres", value: joinedGenreStrings)]
         guard let finalURL = urlComponents?.url else {
             print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
             return
         }
+        print("url: \(finalURL.description)")
         
         URLSession.shared.dataTask(with: finalURL) { (data, response, error) in
             if let response = response as? HTTPURLResponse {
@@ -166,7 +169,6 @@ class NetworkManager {
     }
     
     func sortMoviesByReleaseDate(_ movies: [Movie]) -> [Movie] {
-//        return movies.sorted(by: { $0.date! > $1.date! })
         let sortedMoviesByDate  = movies.sorted(by: { if let movieDate1  = $0.date, let movieDate2 = $1.date {
             return movieDate1 > movieDate2
             }

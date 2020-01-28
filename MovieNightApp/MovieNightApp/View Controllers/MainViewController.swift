@@ -67,6 +67,7 @@ class MainViewController: UIViewController {
             let sortVC  = storyboard?.instantiateViewController(withIdentifier: "SortMoviesVC") as! SortMovieViewController
             
             let matchingGenreIds = matchingGenres.compactMap { $0.id }
+            print("matching genres ids \(matchingGenreIds.count)")
             
             sortVC.selectedIds = matchingGenreIds
             

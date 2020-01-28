@@ -17,7 +17,6 @@ class SortMovieViewController: UIViewController {
     }
     var movies: [Movie]? {
         didSet {
-            print("movies did hit")
             if let movies = movies {
                 DispatchQueue.main.async {
                     self.movies = self.populateTableViews(movies: movies)
@@ -27,11 +26,6 @@ class SortMovieViewController: UIViewController {
         }
     }
     var selectedIds: [Int] = []
-    var id: Int? {
-        didSet {
-           
-        }
-    }
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
@@ -47,6 +41,7 @@ class SortMovieViewController: UIViewController {
                 }
                 if let movies = movies {
                     self.movies = movies
+                    print("movies count: \(movies.count)")
                 } else {
                     print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
                 }
