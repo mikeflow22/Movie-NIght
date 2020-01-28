@@ -77,9 +77,25 @@ extension SortMovieViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sortMovieCell", for: indexPath)
+        guard let movie = movies?[indexPath.row] else { return UITableViewCell() }
+          switch segmentedControl.selectedSegmentIndex {
+              case 0:
+                print("0")
+                  cell.textLabel?.text = movie.title
+                  cell.detailTextLabel?.text = "Ratings: \(movie.voteAverage)"
+              case 1:
+                 print("1")
+                  cell.textLabel?.text = movie.title
+                  cell.detailTextLabel?.text = "Release Date: \(movie.date)"
+              case 2:
+                 print("2")
+                  cell.textLabel?.text = movie.title
+                  cell.detailTextLabel?.text = "Popularity: \(movie.popularity)"
+              default:
+                  print("Error in file: \(#file), in the body of the function: \(#function) on line: \(#line)\n")
+                  return UITableViewCell()
+              }
         
-        let movie = movies?[indexPath.row]
-        cell.textLabel?.text = movie?.title
         return  cell
     }
     
